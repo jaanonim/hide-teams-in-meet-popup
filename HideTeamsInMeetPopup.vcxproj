@@ -148,12 +148,6 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="UserNotifier.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="rc.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="icons\icone.ico" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
