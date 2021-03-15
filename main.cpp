@@ -4,6 +4,8 @@
 #include "resource.h"
 
 const DWORD MAIN_THREAD_ID = GetCurrentThreadId();
+const char* windowName = "Microsoft Teams Call in progress";
+const int windowNameLength = 33;
 
 bool IsWindowTeamsInMeetPopup(HWND hWindow);
 void HideTeamsInMeetPopup(HWND hPopup);
@@ -36,10 +38,10 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int n
 
 bool IsWindowTeamsInMeetPopup(HWND hWindow)
 {
-    char name[33];
-    GetWindowTextA(hWindow, name, 33);
+    char name[windowNameLength];
+    GetWindowTextA(hWindow, name, windowNameLength);
     
-    return strncmp(name, "Microsoft Teams Call in progress", 32) == 0;
+    return strncmp(name, windowName, windowNameLength-1) == 0;
 }
 
 void HideTeamsInMeetPopup(HWND hPopup)
@@ -64,8 +66,8 @@ BOOL CALLBACK FindTeamsInMeetPopup(HWND hwnd, LPARAM lParam)
 
 void CALLBACK WinEventProc(HWINEVENTHOOK hWinEventHook, DWORD event, HWND hwnd, LONG idObject, LONG idChild, DWORD idEventThread, DWORD dwmsEventTime)
 {
-    char name[33];
-    GetWindowTextA(hwnd, name, 33);
+    char name[windowNameLength];
+    GetWindowTextA(hwnd, name, windowNameLength);
 
     if (event == EVENT_OBJECT_NAMECHANGE && IsWindowTeamsInMeetPopup(hwnd))
     {
