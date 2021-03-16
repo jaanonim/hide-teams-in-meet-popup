@@ -4,7 +4,7 @@
 #include "resource.h"
 
 const DWORD MAIN_THREAD_ID = GetCurrentThreadId();
-const char* windowName = "Microsoft Teams Call in progress";
+const char* windowName = "Microsoft Teams Po³¹czenie w toku";
 const int windowNameLength = 33;
 
 bool IsWindowTeamsInMeetPopup(HWND hWindow);
